@@ -1,7 +1,15 @@
 using Microsoft.AspNetCore.SignalR;
+using MongoDB.Driver;
 
 public class ChatHub : Hub
 {
+    private readonly IMongoCollection<ChatMessage> _messages;
+
+    public ChatHub(IMongoCollection<ChatMessage> messages)
+    {
+        _messages = messages;
+    }
+
     public override async Task OnConnectedAsync()
     {
         var user = Context.User?.Identity?.Name;
@@ -47,5 +55,14 @@ public class ChatHub : Hub
 
         // ✅ Enviar mensaje privado
         await Clients.User(receiver).SendAsync("ReceiveMessage", sender, message);
+
+        var chatMessage = new ChatMessage
+        {
+            Sender = sender,
+            Receiver = receiver,
+            Message = message,
+            Timestamp = DateTime.UtcNow
+        };
+        await _messages.InsertOneAsync(chatMessage);
     }
 }
