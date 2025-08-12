@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\benja\\OneDrive\\Desktop\\trabajo\\pmp\\consolaChat\\ConsoleChatApp\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\benja\\OneDrive\\Desktop\\trabajo\\pmp\\consolaChat\\ConsoleChatApp\\wwwroot\\login.html",
+      "PackagePath": "staticwebassets\\login.html"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ConsoleChatApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ConsoleChatApp.props",
+      "PackagePath": "build\\ConsoleChatApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ConsoleChatApp.props",
+      "PackagePath": "buildMultiTargeting\\ConsoleChatApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ConsoleChatApp.props",
+      "PackagePath": "buildTransitive\\ConsoleChatApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

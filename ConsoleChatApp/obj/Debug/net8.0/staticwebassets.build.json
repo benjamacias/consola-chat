@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "PRVrghNU6H5aFLh0iQG6lvzF1J5g6JCsvQwc7Fep6gE=",
+  "Source": "ConsoleChatApp",
+  "BasePath": "_content/ConsoleChatApp",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "ConsoleChatApp\\wwwroot",
+      "Source": "ConsoleChatApp",
+      "ContentRoot": "C:\\Users\\benja\\OneDrive\\Desktop\\trabajo\\pmp\\consolaChat\\ConsoleChatApp\\wwwroot\\",
+      "BasePath": "_content/ConsoleChatApp",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\benja\\OneDrive\\Desktop\\trabajo\\pmp\\consolaChat\\ConsoleChatApp\\wwwroot\\index.html",
+      "SourceId": "ConsoleChatApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\benja\\OneDrive\\Desktop\\trabajo\\pmp\\consolaChat\\ConsoleChatApp\\wwwroot\\",
+      "BasePath": "_content/ConsoleChatApp",
+      "RelativePath": "index.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\index.html"
+    },
+    {
+      "Identity": "C:\\Users\\benja\\OneDrive\\Desktop\\trabajo\\pmp\\consolaChat\\ConsoleChatApp\\wwwroot\\login.html",
+      "SourceId": "ConsoleChatApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\benja\\OneDrive\\Desktop\\trabajo\\pmp\\consolaChat\\ConsoleChatApp\\wwwroot\\",
+      "BasePath": "_content/ConsoleChatApp",
+      "RelativePath": "login.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\login.html"
+    }
+  ]
+}

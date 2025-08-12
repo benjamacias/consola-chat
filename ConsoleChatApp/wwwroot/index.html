@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Console Chat</title>
+    
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- xterm.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css" />
+    <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+
+    <style>
+        body {
+            background: #000;
+            font-family: monospace;
+        }
+        .xterm-viewport {
+            background: #000 !important;
+        }
+        #command-input {
+            caret-color: lime;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen bg-black">
+
+    <div class="bg-black border border-green-500 rounded-lg shadow-2xl shadow-green-800 w-11/12 md:w-3/4 lg:w-2/3 h-5/6 flex flex-col">
+        <div id="terminal" class="flex-1"></div>
+        <input 
+            id="command-input" 
+            placeholder="Escribe un comando o mensaje..." 
+            class="bg-black text-green-300 border-t border-green-500 w-full p-3 outline-none font-mono"
+            autofocus />
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.5/signalr.min.js"></script>
+    <script>
+        // Inicializar terminal
+        const term = new Terminal({
+            theme: { background: '#000000', foreground: '#00FF00' },
+            fontSize: 14,
+            fontFamily: 'monospace'
+        });
+        term.open(document.getElementById('terminal'));
+
+        // Animación de escritura sin borrar otros mensajes
+        function typeSlowly(text, speed = 40, callback) {
+            const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&?";
+            let output = Array(text.length).fill(" ");
+            let index = 0;
+
+            const interval = setInterval(() => {
+                let animated = "";
+                for (let i = 0; i < text.length; i++) {
+                    if (i < index) {
+                        animated += text[i];
+                    } else if (text[i] === " " || text[i] === "\n" || text[i] === "\r") {
+                        animated += text[i];
+                    } else {
+                        animated += chars.charAt(Math.floor(Math.random() * chars.length));
+                    }
+                }
+
+                term.write("\x1b[2K\r"); // limpia solo la línea actual
+                term.write(animated + "_");
+
+                if (index < text.length) index++;
+
+                if (index >= text.length) {
+                    clearInterval(interval);
+                    term.write("\x1b[2K\r"); // limpia
+                    term.writeln(text);      // escribe el mensaje final
+                    if (callback) callback();
+                }
+            }, speed);
+        }
+
+        // Animación de bienvenida primero
+        typeSlowly("👋 Hola, bienvenido a la consola de chat.", 40, () => {
+            term.writeln("Escribe 'destinatario mensaje' o '/online' para listar usuarios.");
+        });
+
+        // Conexión con SignalR
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/chatHub")
+            .build();
+
+        connection.on("ReceiveMessage", (user, msg) => {
+            const prefix = user === "System" ? "⚙️" : "📥";
+            const time = new Date().toLocaleTimeString();
+            term.writeln(`[${time}] ${prefix} ${user}: ${msg}`);
+        });
+
+        connection.start()
+            .then(() => {
+                term.writeln("\r\n✅ Conexión establecida.\r\n");
+            })
+    .catch(err => term.writeln("❌ Error al conectar: " + err));
+
+
+        // Historial de comandos
+        const input = document.getElementById("command-input");
+        let history = [];
+        let historyIndex = -1;
+
+        input.addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                const command = input.value.trim();
+                if (!command) return;
+
+                history.push(command);
+                historyIndex = history.length;
+
+                if (command.startsWith("/")) {
+                    connection.invoke("SendMessage", "", command);
+                    const time = new Date().toLocaleTimeString();
+                    term.writeln(`[${time}] 📤 Comando enviado: ${command}`);
+                } else {
+                    const parts = command.split(" ");
+                    if (parts.length < 2) {
+                        term.writeln("⚠️ Uso: destinatario mensaje");
+                    } else {
+                        const receiver = parts.shift();
+                        const msg = parts.join(" ");
+                        connection.invoke("SendMessage", receiver, msg);
+                        const time = new Date().toLocaleTimeString();
+                        term.writeln(`[${time}] 📤 Tú -> ${receiver}: ${msg}`);
+                    }
+                }
+                input.value = "";
+            }
+
+            if (e.key === "ArrowUp") {
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    input.value = history[historyIndex];
+                    input.setSelectionRange(input.value.length, input.value.length);
+                }
+            }
+
+            if (e.key === "ArrowDown") {
+                if (historyIndex < history.length - 1) {
+                    historyIndex++;
+                    input.value = history[historyIndex];
+                } else {
+                    input.value = "";
+                    historyIndex = history.length;
+                }
+                input.setSelectionRange(input.value.length, input.value.length);
+            }
+        });
+    </script>
+</body>
+</html>
