@@ -79,7 +79,7 @@
 
         // Animación de bienvenida primero
         typeSlowly("👋 Hola, bienvenido a la consola de chat.", 40, () => {
-            term.writeln("Escribe 'destinatario mensaje' o '/online' para listar usuarios.");
+            term.writeln("Escribe 'destinatario mensaje', '/online' para listar usuarios o 'cat usuario' para ver historial.");
         });
 
         // Conexión con SignalR
@@ -113,7 +113,7 @@
                 history.push(command);
                 historyIndex = history.length;
 
-                if (command.startsWith("/")) {
+                if (command.startsWith("/") || command.startsWith("cat ")) {
                     connection.invoke("SendMessage", "", command);
                     const time = new Date().toLocaleTimeString();
                     term.writeln(`[${time}] 📤 Comando enviado: ${command}`);
