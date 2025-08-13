@@ -9,10 +9,22 @@
       "ConsoleChatApp/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.Cookies": "2.3.0",
-          "Microsoft.AspNetCore.SignalR": "1.2.0"
+          "Microsoft.AspNetCore.SignalR": "1.2.0",
+          "MongoDB.Driver": "3.4.2"
         },
         "runtime": {
           "ConsoleChatApp.dll": {}
+        }
+      },
+      "DnsClient/1.6.1": {
+        "dependencies": {
+          "Microsoft.Win32.Registry": "5.0.0"
+        },
+        "runtime": {
+          "lib/net5.0/DnsClient.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
         }
       },
       "Microsoft.AspNetCore.Authentication/2.3.0": {
@@ -72,7 +84,7 @@
           "Microsoft.Extensions.DependencyInjection.Abstractions": "8.0.2",
           "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
           "Microsoft.Extensions.Options": "8.0.2",
-          "Microsoft.Win32.Registry": "4.5.0",
+          "Microsoft.Win32.Registry": "5.0.0",
           "System.Security.Cryptography.Xml": "8.0.2",
           "System.Security.Principal.Windows": "5.0.0"
         }
@@ -296,11 +308,40 @@
           "System.Buffers": "4.6.0"
         }
       },
-      "Microsoft.NETCore.Platforms/2.0.0": {},
-      "Microsoft.Win32.Registry/4.5.0": {
+      "Microsoft.NETCore.Platforms/5.0.0": {},
+      "Microsoft.Win32.Registry/5.0.0": {
         "dependencies": {
-          "System.Security.AccessControl": "4.5.0",
+          "System.Security.AccessControl": "5.0.0",
           "System.Security.Principal.Windows": "5.0.0"
+        }
+      },
+      "MongoDB.Bson/3.4.2": {
+        "dependencies": {
+          "System.Memory": "4.5.5",
+          "System.Runtime.CompilerServices.Unsafe": "5.0.0"
+        },
+        "runtime": {
+          "lib/net6.0/MongoDB.Bson.dll": {
+            "assemblyVersion": "3.4.2.0",
+            "fileVersion": "3.4.2.0"
+          }
+        }
+      },
+      "MongoDB.Driver/3.4.2": {
+        "dependencies": {
+          "DnsClient": "1.6.1",
+          "Microsoft.Extensions.Logging.Abstractions": "8.0.2",
+          "MongoDB.Bson": "3.4.2",
+          "SharpCompress": "0.30.1",
+          "Snappier": "1.0.0",
+          "System.Buffers": "4.6.0",
+          "ZstdSharp.Port": "0.7.3"
+        },
+        "runtime": {
+          "lib/net6.0/MongoDB.Driver.dll": {
+            "assemblyVersion": "3.4.2.0",
+            "fileVersion": "3.4.2.0"
+          }
         }
       },
       "Newtonsoft.Json/11.0.2": {
@@ -311,8 +352,25 @@
           }
         }
       },
+      "SharpCompress/0.30.1": {
+        "runtime": {
+          "lib/net5.0/SharpCompress.dll": {
+            "assemblyVersion": "0.30.1.0",
+            "fileVersion": "0.30.1.0"
+          }
+        }
+      },
+      "Snappier/1.0.0": {
+        "runtime": {
+          "lib/net5.0/Snappier.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "System.Buffers/4.6.0": {},
       "System.IO.Pipelines/8.0.0": {},
+      "System.Memory/4.5.5": {},
       "System.Net.WebSockets.WebSocketProtocol/5.1.0": {
         "runtime": {
           "lib/net6.0/System.Net.WebSockets.WebSocketProtocol.dll": {
@@ -322,9 +380,10 @@
         }
       },
       "System.Reflection.Emit/4.7.0": {},
-      "System.Security.AccessControl/4.5.0": {
+      "System.Runtime.CompilerServices.Unsafe/5.0.0": {},
+      "System.Security.AccessControl/5.0.0": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "2.0.0",
+          "Microsoft.NETCore.Platforms": "5.0.0",
           "System.Security.Principal.Windows": "5.0.0"
         }
       },
@@ -357,7 +416,15 @@
       },
       "System.Security.Principal.Windows/5.0.0": {},
       "System.Text.Encodings.Web/8.0.0": {},
-      "System.Threading.Channels/8.0.0": {}
+      "System.Threading.Channels/8.0.0": {},
+      "ZstdSharp.Port/0.7.3": {
+        "runtime": {
+          "lib/net7.0/ZstdSharp.dll": {
+            "assemblyVersion": "0.7.3.0",
+            "fileVersion": "0.7.3.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -365,6 +432,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "DnsClient/1.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-4H/f2uYJOZ+YObZjpY9ABrKZI+JNw3uizp6oMzTXwDw6F+2qIPhpRl/1t68O/6e98+vqNiYGu+lswmwdYUy3gg==",
+      "path": "dnsclient/1.6.1",
+      "hashPath": "dnsclient.1.6.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Authentication/2.3.0": {
       "type": "package",
@@ -625,19 +699,33 @@
       "path": "microsoft.net.http.headers/2.3.0",
       "hashPath": "microsoft.net.http.headers.2.3.0.nupkg.sha512"
     },
-    "Microsoft.NETCore.Platforms/2.0.0": {
+    "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-VdLJOCXhZaEMY7Hm2GKiULmn7IEPFE4XC5LPSfBVCUIA8YLZVh846gtfBJalsPQF2PlzdD7ecX7DZEulJ402ZQ==",
-      "path": "microsoft.netcore.platforms/2.0.0",
-      "hashPath": "microsoft.netcore.platforms.2.0.0.nupkg.sha512"
+      "sha512": "sha512-VyPlqzH2wavqquTcYpkIIAQ6WdenuKoFN0BdYBbCWsclXacSOHNQn66Gt4z5NBqEYW0FAPm5rlvki9ZiCij5xQ==",
+      "path": "microsoft.netcore.platforms/5.0.0",
+      "hashPath": "microsoft.netcore.platforms.5.0.0.nupkg.sha512"
     },
-    "Microsoft.Win32.Registry/4.5.0": {
+    "Microsoft.Win32.Registry/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-+FWlwd//+Tt56316p00hVePBCouXyEzT86Jb3+AuRotTND0IYn0OO3obs1gnQEs/txEnt+rF2JBGLItTG+Be6A==",
-      "path": "microsoft.win32.registry/4.5.0",
-      "hashPath": "microsoft.win32.registry.4.5.0.nupkg.sha512"
+      "sha512": "sha512-dDoKi0PnDz31yAyETfRntsLArTlVAVzUzCIvvEDsDsucrl33Dl8pIJG06ePTJTI3tGpeyHS9Cq7Foc/s4EeKcg==",
+      "path": "microsoft.win32.registry/5.0.0",
+      "hashPath": "microsoft.win32.registry.5.0.0.nupkg.sha512"
+    },
+    "MongoDB.Bson/3.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FubVWPnefWjGa3aE0U/b3fn0p9S1KPIZwLAA4PguwYHNybzesaEPglscpY9YGVN72ggGeig1e88G9D5jCnY70w==",
+      "path": "mongodb.bson/3.4.2",
+      "hashPath": "mongodb.bson.3.4.2.nupkg.sha512"
+    },
+    "MongoDB.Driver/3.4.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-uB2VlLZO4kGvn499Xbdtu/BfAX6wMqpXlWhDonPGGzyCD+Cho+g0M5XIBjPh/8EFrWmBMKvRamW+AWFjgxx+pw==",
+      "path": "mongodb.driver/3.4.2",
+      "hashPath": "mongodb.driver.3.4.2.nupkg.sha512"
     },
     "Newtonsoft.Json/11.0.2": {
       "type": "package",
@@ -645,6 +733,20 @@
       "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
       "path": "newtonsoft.json/11.0.2",
       "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
+    },
+    "SharpCompress/0.30.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XqD4TpfyYGa7QTPzaGlMVbcecKnXy4YmYLDWrU+JIj7IuRNl7DH2END+Ll7ekWIY8o3dAMWLFDE1xdhfIWD1nw==",
+      "path": "sharpcompress/0.30.1",
+      "hashPath": "sharpcompress.0.30.1.nupkg.sha512"
+    },
+    "Snappier/1.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rFtK2KEI9hIe8gtx3a0YDXdHOpedIf9wYCEYtBEmtlyiWVX3XlCNV03JrmmAi/Cdfn7dxK+k0sjjcLv4fpHnqA==",
+      "path": "snappier/1.0.0",
+      "hashPath": "snappier.1.0.0.nupkg.sha512"
     },
     "System.Buffers/4.6.0": {
       "type": "package",
@@ -660,6 +762,13 @@
       "path": "system.io.pipelines/8.0.0",
       "hashPath": "system.io.pipelines.8.0.0.nupkg.sha512"
     },
+    "System.Memory/4.5.5": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XIWiDvKPXaTveaB7HVganDlOCRoj03l+jrwNvcge/t8vhGYKvqV+dMv6G4SAX2NoNmN0wZfVPTAlFwZcZvVOUw==",
+      "path": "system.memory/4.5.5",
+      "hashPath": "system.memory.4.5.5.nupkg.sha512"
+    },
     "System.Net.WebSockets.WebSocketProtocol/5.1.0": {
       "type": "package",
       "serviceable": true,
@@ -674,12 +783,19 @@
       "path": "system.reflection.emit/4.7.0",
       "hashPath": "system.reflection.emit.4.7.0.nupkg.sha512"
     },
-    "System.Security.AccessControl/4.5.0": {
+    "System.Runtime.CompilerServices.Unsafe/5.0.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vW8Eoq0TMyz5vAG/6ce483x/CP83fgm4SJe5P8Tb1tZaobcvPrbMEL7rhH1DRdrYbbb6F0vq3OlzmK0Pkwks5A==",
-      "path": "system.security.accesscontrol/4.5.0",
-      "hashPath": "system.security.accesscontrol.4.5.0.nupkg.sha512"
+      "sha512": "sha512-ZD9TMpsmYJLrxbbmdvhwt9YEgG5WntEnZ/d1eH8JBX9LBp+Ju8BSBhUGbZMNVHHomWo2KVImJhTDl2hIgw/6MA==",
+      "path": "system.runtime.compilerservices.unsafe/5.0.0",
+      "hashPath": "system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    },
+    "System.Security.AccessControl/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-dagJ1mHZO3Ani8GH0PHpPEe/oYO+rVdbQjvjJkBRNQkX4t0r1iaeGn8+/ybkSLEan3/slM0t59SVdHzuHf2jmw==",
+      "path": "system.security.accesscontrol/5.0.0",
+      "hashPath": "system.security.accesscontrol.5.0.0.nupkg.sha512"
     },
     "System.Security.Cryptography.Pkcs/8.0.1": {
       "type": "package",
@@ -715,6 +831,13 @@
       "sha512": "sha512-CMaFr7v+57RW7uZfZkPExsPB6ljwzhjACWW1gfU35Y56rk72B/Wu+sTqxVmGSk4SFUlPc3cjeKND0zktziyjBA==",
       "path": "system.threading.channels/8.0.0",
       "hashPath": "system.threading.channels.8.0.0.nupkg.sha512"
+    },
+    "ZstdSharp.Port/0.7.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U9Ix4l4cl58Kzz1rJzj5hoVTjmbx1qGMwzAcbv1j/d3NzrFaESIurQyg+ow4mivCgkE3S413y+U9k4WdnEIkRA==",
+      "path": "zstdsharp.port/0.7.3",
+      "hashPath": "zstdsharp.port.0.7.3.nupkg.sha512"
     }
   }
 }
