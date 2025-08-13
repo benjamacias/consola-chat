@@ -21,18 +21,24 @@ builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
-app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapHub<ChatHub>("/chatHub");
+// ✅ Página de login accesible sin autenticación
+app.MapGet("/login.html", async context =>
+{
+    context.Response.ContentType = "text/html";
+    await context.Response.SendFileAsync("wwwroot/login.html");
+});
 
-// ✅ Servir index.html al entrar a "/"
+// ✅ Hub y página principal requieren autenticación
+app.MapHub<ChatHub>("/chatHub").RequireAuthorization();
+
 app.MapGet("/", async context =>
 {
     context.Response.ContentType = "text/html";
     await context.Response.SendFileAsync("wwwroot/index.html");
-});
+}).RequireAuthorization();
 
 // ✅ Login
 app.MapPost("/login", async (HttpContext ctx) =>
