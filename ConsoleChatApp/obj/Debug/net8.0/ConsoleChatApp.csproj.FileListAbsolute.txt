@@ -38,3 +38,10 @@ C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\obj\Debug
 C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\obj\Debug\net8.0\ConsoleChatApp.pdb
 C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\obj\Debug\net8.0\ConsoleChatApp.genruntimeconfig.cache
 C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\obj\Debug\net8.0\ref\ConsoleChatApp.dll
+C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\bin\Debug\net8.0\DnsClient.dll
+C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\bin\Debug\net8.0\MongoDB.Bson.dll
+C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\bin\Debug\net8.0\MongoDB.Driver.dll
+C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\bin\Debug\net8.0\SharpCompress.dll
+C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\bin\Debug\net8.0\Snappier.dll
+C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\bin\Debug\net8.0\ZstdSharp.dll
+C:\Users\benja\OneDrive\Desktop\trabajo\pmp\consolaChat\ConsoleChatApp\obj\Debug\net8.0\ConsoleChatApp.sourcelink.json
