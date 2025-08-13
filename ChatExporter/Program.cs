@@ -1,4 +1,6 @@
 using MongoDB.Driver;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 var client = new MongoClient(Environment.GetEnvironmentVariable("MONGODB_URI") ?? "mongodb://localhost:27017");
 var db = client.GetDatabase("chatdb");
@@ -16,7 +18,8 @@ Console.WriteLine(await File.ReadAllTextAsync(path));
 
 class ChatMessage
 {
-    public string Id { get; set; } = null!;
+    [BsonId]
+    public ObjectId Id { get; set; }
     public string Sender { get; set; } = null!;
     public string Receiver { get; set; } = null!;
     public string Message { get; set; } = null!;

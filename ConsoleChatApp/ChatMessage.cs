@@ -1,6 +1,10 @@
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
+
 public class ChatMessage
 {
-    public string Id { get; set; } = null!; // MongoDB document Id
+    [BsonId]
+    public ObjectId Id { get; set; } = ObjectId.GenerateNewId();
     public string Sender { get; set; } = null!;
     public string Receiver { get; set; } = null!;
     public string Message { get; set; } = null!;
